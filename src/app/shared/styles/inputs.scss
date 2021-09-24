@@ -16,7 +16,7 @@ label {
 input {
     font-size: 1.1em;
     outline: none;
-    border: 1px solid #efefef;
+    border: 1px solid $input_border;
     border-radius: 3px;
     padding: 8px 12px;
     color: $grey_text_color;
@@ -32,8 +32,8 @@ input[disabled] {
 }
 
 .checkbox {
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
     gap: 8px;
     margin-bottom: 8px;
 }
@@ -49,17 +49,17 @@ input[disabled] {
 }
 
 .button-big[disabled] {
-    color: rgb(245,245,245);
-    background-color: rgb(88,88,88);
+    color: $button_big_color_disabled;
+    background-color: $button_big_background_color_disabled;
 }
 
 select {
     width: 100%;
     font-size: 1em;
     outline: none;
-    border: 1px solid #efefef;
+    border: 1px solid $input_border;
     border-radius: 3px;
-    color: rgb(104,104,104);
+    color: $grey_text_color;
     padding: 8px 35px 8px 12px;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -77,12 +77,12 @@ select::-ms-expand {
 }
 
 .select-wrapper::before {
-    font-family: fontello;
+  font-family: fontello, sans-serif;
     content: "⌄";
     font-size: 18px;
     position: absolute;
     right: 18px;
     top: 5px;
-    color: rgb(104,104,104);
+    color: $grey_text_color;
     pointer-events: none;
 }
