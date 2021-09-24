@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { IAddress } from 'src/app/shared/interfaces/IAddress';
-import { getIUser, IUser } from 'src/app/shared/interfaces/IUser';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { UserService } from 'src/app/shared/services/user.service';
-import { ValidateZipCode } from 'src/app/shared/validators/validators';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import {IAddress} from 'src/app/shared/interfaces/IAddress';
+import {getIUser, IUser} from 'src/app/shared/interfaces/IUser';
+import {AuthService} from 'src/app/shared/services/auth.service';
+import {UserService} from 'src/app/shared/services/user.service';
+import {ValidateZipCode} from 'src/app/shared/validators/validators';
+
 const countryCodes: any = require('country-codes-list');
 
 @Component({
@@ -58,8 +59,7 @@ export class AccountComponent implements OnInit {
    */
   async setUser(): Promise<void> {
     this.user = this.userService.getUserFromLocalStorage();
-    const userId: number = await this.userService.getUserIdOfToken();
-    this.user.id = userId;
+    this.user.id = await this.userService.getUserIdOfToken();
   }
 
   /**
@@ -107,8 +107,8 @@ export class AccountComponent implements OnInit {
    * @returns boolean
    */
   validateIsZipCodeSet(): boolean {
-    return this.newAddressForm.get('zipCode')?.touched
-            && this.newAddressForm.get('zipCode')?.errors?.required ? true : false;
+    return !!(this.newAddressForm.get('zipCode')?.touched
+      && this.newAddressForm.get('zipCode')?.errors?.required);
   }
 
   /**
@@ -122,9 +122,9 @@ export class AccountComponent implements OnInit {
       this.newAddressForm.get('zipCode')?.enable();
     }
 
-    return this.newAddressForm.get('zipCode')?.dirty
-            && !this.newAddressForm.get('zipCode')?.errors?.required
-            && this.newAddressForm.get('zipCode')?.errors?.invalidZipCode ? true : false;
+    return !!(this.newAddressForm.get('zipCode')?.dirty
+      && !this.newAddressForm.get('zipCode')?.errors?.required
+      && this.newAddressForm.get('zipCode')?.errors?.invalidZipCode);
   }
 
   /**
@@ -132,8 +132,8 @@ export class AccountComponent implements OnInit {
    * @returns boolean
    */
   validateIsCountrySet(): boolean {
-    return this.newAddressForm.get('country')?.dirty
-            && this.newAddressForm.get('country')?.errors?.required ? true : false;
+    return !!(this.newAddressForm.get('country')?.dirty
+      && this.newAddressForm.get('country')?.errors?.required);
   }
 
   /**
@@ -141,8 +141,8 @@ export class AccountComponent implements OnInit {
    * @returns boolean
    */
   validateIsCitySet(): boolean {
-    return this.newAddressForm.get('city')?.touched
-            && this.newAddressForm.get('city')?.errors?.required ? true : false;
+    return !!(this.newAddressForm.get('city')?.touched
+      && this.newAddressForm.get('city')?.errors?.required);
   }
 
   /**
@@ -150,8 +150,8 @@ export class AccountComponent implements OnInit {
    * @returns boolean
    */
   validateIsAddress1Set(): boolean {
-    return this.newAddressForm.get('address1')?.touched
-            && this.newAddressForm.get('address1')?.errors?.required ? true : false;
+    return !!(this.newAddressForm.get('address1')?.touched
+      && this.newAddressForm.get('address1')?.errors?.required);
   }
 
   /**
@@ -159,8 +159,8 @@ export class AccountComponent implements OnInit {
    * @returns boolean
    */
   validateIsPhoneSet(): boolean {
-    return this.newAddressForm.get('phone')?.touched
-            && this.newAddressForm.get('phone')?.errors?.required ? true : false;
+    return !!(this.newAddressForm.get('phone')?.touched
+      && this.newAddressForm.get('phone')?.errors?.required);
   }
 
   /**
@@ -168,8 +168,8 @@ export class AccountComponent implements OnInit {
    * @returns boolean
    */
   validateIsLastNameSet(): boolean {
-    return this.newAddressForm.get('lastName')?.touched
-            && this.newAddressForm.get('lastName')?.errors?.required ? true : false;
+    return !!(this.newAddressForm.get('lastName')?.touched
+      && this.newAddressForm.get('lastName')?.errors?.required);
   }
 
   /**
@@ -177,7 +177,7 @@ export class AccountComponent implements OnInit {
    * @returns boolean
    */
   validateIsFirstNameSet(): boolean {
-    return this.newAddressForm.get('firstName')?.touched
-            && this.newAddressForm.get('firstName')?.errors?.required ? true : false;
+    return !!(this.newAddressForm.get('firstName')?.touched
+      && this.newAddressForm.get('firstName')?.errors?.required);
   }
 }
