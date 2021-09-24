@@ -11,6 +11,7 @@ import { AdminModule } from './admin/admin.module';
 import { IsUserAuthenticatedGuard } from './shared/guards/is-user-authenticated.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -29,12 +30,13 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     RouterModule,
     NavigationModule,
-    AdminModule
+    AdminModule,
+    ReactiveFormsModule,
   ],
   providers: [
     UserAuthGuard,
     IsUserAuthenticatedGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

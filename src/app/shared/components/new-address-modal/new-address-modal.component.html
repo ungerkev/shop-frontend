@@ -1,0 +1,85 @@
+<div class="modal">
+  <div class="modal-content">
+    <span (click)="hideNewAddressModal()" class="close">&times;</span>
+    <h1>Add new address</h1>
+    <p>Please fill in the information below.</p>
+
+    <form style="display: flex; flex-direction: column;" [formGroup]="newAddressForm" (ngSubmit)="saveNewAddress()" novalidate>
+      <label>
+        <span> First name
+            <span class="required-input" *ngIf="validateIsFirstNameSet()"> &nbsp;*Please fill in </span>
+        </span>
+        <input type="text" formControlName="firstName">
+      </label>
+
+      <label>
+        <span> Last name
+            <span class="required-input" *ngIf="validateIsLastNameSet()"> &nbsp;*Please fill in </span>
+        </span>
+        <input type="text" formControlName="lastName">
+      </label>
+
+      <label>
+        <span> Company </span>
+        <input type="text" formControlName="company">
+      </label>
+
+      <label>
+        <span> Phone
+            <span class="required-input" *ngIf="validateIsPhoneSet()"> &nbsp;*Please fill in </span>
+        </span>
+        <input type="text" formControlName="phone">
+      </label>
+
+      <label>
+        <span> Address1
+            <span class="required-input" *ngIf="validateIsAddress1Set()"> &nbsp;*Please fill in </span>
+        </span>
+        <input type="text" formControlName="address1">
+      </label>
+
+      <label>
+        <span> Address2 </span>
+        <input type="text" formControlName="address2">
+      </label>
+
+      <label>
+        <span> City
+            <span class="required-input" *ngIf="validateIsCitySet()"> &nbsp;*Please fill in </span>
+        </span>
+        <input type="text" formControlName="city">
+      </label>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <label>
+          <span> Country
+              <span class="required-input" *ngIf="validateIsCountrySet()"> &nbsp;*Please fill in </span>
+          </span>
+          <div class="select-wrapper" style="max-width: 195px;">
+            <select formControlName="country">
+              <option> </option>
+              <option *ngFor="let country of countryCodeList | keyvalue" [value]="country.value"> {{ country.key }} </option>
+            </select>
+          </div>
+        </label>
+
+        <label>
+          <span> Zip code
+              <span class="required-input" *ngIf="validateIsZipCodeSet()"> &nbsp;*Please fill in </span>
+              <span class="required-input" *ngIf="validateZipCode()"> &nbsp;*Zip code invalid </span>
+          </span>
+          <input type="text" formControlName="zipCode" style="max-width: 165px;">
+        </label>
+      </div>
+
+      <div class="checkbox">
+        <input type="checkbox" formControlName="isDefault">
+        <label> Set address as default </label>
+      </div>
+
+      <button class="button-big" [disabled]="!newAddressForm.valid">Add new address</button>
+    </form>
+
+  </div>
+</div>
+
