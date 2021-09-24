@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { appRouting } from './app-routing';
 import { AppComponent } from './app.component';
-import { NavigationModule } from './core/navigation/navigation.module';
+import { NavigationModule } from './navigation/navigation.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { UserAuthGuard } from './shared/guards/user-auth.guard';
