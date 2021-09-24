@@ -28,7 +28,17 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ionicons/dist/ionicons",
+                "output": "./ionicons"
+              },
+              {
+                "glob": "**/*.js",
+                "input": "node_modules/ionicons/dist/",
+                "output": "./"
+              }
             ],
             "styles": [
               "src/styles.scss"

@@ -1,0 +1,32 @@
+@import '../../shared/styles/modal.scss';
+@import '../../shared/styles/inputs.scss';
+@import '../../shared/styles/text.scss';
+
+.wrapper {
+    width: 90%;
+    max-width: 1250px;
+    margin: 1% auto;
+
+    .logout {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        button {
+            width: 100px;
+            cursor: pointer;
+        }
+    }
+
+    .information {
+        margin-top: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .addresses {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

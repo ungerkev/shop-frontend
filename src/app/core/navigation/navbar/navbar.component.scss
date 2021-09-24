@@ -1,0 +1,37 @@
+.wrapper {
+
+    .hint {
+        display: flex;
+        justify-content: center;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 0.9em;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: black;
+        color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 30px;
+        padding-right: 30px;
+        font-size: 1.6em;
+
+        .hamburger {
+            font-size: 1.3em;
+            cursor: pointer;
+        }
+
+        ul {
+            display: flex;
+            gap: 20px;
+
+            li {
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -1,0 +1,88 @@
+@import 'variables.scss';
+
+label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9em;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: $grey_text_color;
+
+    span {
+        margin-left: 3px;
+    }
+}
+
+input {
+    font-size: 1.1em;
+    outline: none;
+    border: 1px solid #efefef;
+    border-radius: 3px;
+    padding: 8px 12px;
+    color: $grey_text_color;
+}
+
+input[disabled] {
+    background-color: $disabled_input_background_color;
+}
+
+.required-input {
+    color: $required_input_label_text_color;
+    text-align: right;
+}
+
+.checkbox {
+    display: flex; 
+    align-items: center; 
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.button-big {
+    font-size: 1em;
+    border: none;
+    background-color: $button_big_background_color;
+    color: $button_big_color;
+    letter-spacing: 2px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.button-big[disabled] {
+    color: rgb(245,245,245);
+    background-color: rgb(88,88,88);
+}
+
+select {
+    width: 100%;
+    font-size: 1em;
+    outline: none;
+    border: 1px solid #efefef;
+    border-radius: 3px;
+    color: rgb(104,104,104);
+    padding: 8px 35px 8px 12px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 38.5px;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.select-wrapper::before {
+    font-family: fontello;
+    content: "⌄";
+    font-size: 18px;
+    position: absolute;
+    right: 18px;
+    top: 5px;
+    color: rgb(104,104,104);
+    pointer-events: none;
+}

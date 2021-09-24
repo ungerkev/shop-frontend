@@ -1,0 +1,36 @@
+
+<div class="wrapper">
+    <div class="header">
+        <h1>LOGIN</h1>
+        <h2>Please enter your e-mail and password:</h2>
+    </div>
+    
+
+    <form class="input-fields" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+        
+        <div style="height: 25px;">
+            <input type="text" formControlName="email" placeholder="Email">
+            <small *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.required">
+                Please enter email address!
+            </small>
+            <small *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.email">
+                Email address not well formed!
+            </small>
+        </div>
+            
+
+        <div style="height: 25px;">
+            <input type="password" formControlName="password" placeholder="Password">
+            <small *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.required">
+                Please enter password!
+            </small>
+        </div>
+            
+        <button type="submit" [disabled]="!loginForm.valid" >LOGIN</button>
+        
+    </form>
+    
+
+    <p routerLink="/account/register">Don't have an account? Create one</p>
+
+</div>

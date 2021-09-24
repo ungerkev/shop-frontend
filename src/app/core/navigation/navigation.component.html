@@ -1,0 +1,2 @@
+<app-navbar [showSearch]="showSearch" (showSearchChanged)="toggleSearch($event)"></app-navbar>
+<app-search *ngIf="showSearch" [showSearch]="showSearch" (showSearchChanged)="toggleSearch($event)" class="search"></app-search>

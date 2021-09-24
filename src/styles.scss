@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'reset-css';
+
+
+* {
+    font-family: "Roboto", sans-serif;
+}
+  
+.toast-title{
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 5px;
+}
+
+.toast-message{
+    font-family: "Roboto", sans-serif;
+}
