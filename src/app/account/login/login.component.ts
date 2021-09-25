@@ -19,8 +19,6 @@ export class LoginComponent implements OnInit {
               private router: Router) { }
 
   async ngOnInit(): Promise<void> {
-    const isAuthenticated = await this.authService.isAuthenticated();
-    console.log(isAuthenticated);
   }
 
   login(): void {
@@ -28,13 +26,6 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.value.email !== '' && this.loginForm.value.password !== '') {
       // do the login
       this.authService.login(this.loginForm.value.email, this.loginForm.value.password, this.loginForm.value.rememberMe).then((res: any) => {
-        localStorage.setItem('user', JSON.stringify({
-          firstName: res.user.firstName,
-          lastName: res.user.lastName,
-         }));
-        localStorage.setItem('accessToken', res.tokens.accessToken);
-        localStorage.setItem('refreshToken', res.tokens.refreshToken);
-
         this.router.navigate(['/account']);
       }).catch((err) => {
         console.log('login error');

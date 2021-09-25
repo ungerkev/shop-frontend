@@ -33,8 +33,8 @@ export class UserService {
    * Returns the userId from the payload of the JWT token
    * @returns Promise
    */
-  public getUserIdOfToken(): Promise<any> {
-    return this.http.get('http://localhost:3000/userId').toPromise();
+  public getUserId(): Promise<any> {
+    return this.http.get('http://localhost:3000/userId', { withCredentials: true }).toPromise();
   }
 
   /**
@@ -43,18 +43,5 @@ export class UserService {
    */
   public isAdmin(): Promise<any> {
     return this.http.post('http://localhost:3000/isAdmin', '').toPromise();
-  }
-
-  /**
-   * Get user from local storage
-   * @returns any
-   */
-   getUserFromLocalStorage(): any { // TODO: refactor types
-    let user: any;
-    if (localStorage.getItem('user') !== null) {
-      user = JSON.parse(localStorage.getItem('user') || '');
-      return user;
-    }
-    return null;
   }
 }

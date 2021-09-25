@@ -4,7 +4,6 @@ import { ValidateZipCode } from "../../validators/validators";
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
 import { UserService } from "../../services/user.service";
-import { getIUser, IUser } from "../../interfaces/IUser";
 import { IAddress } from "../../interfaces/IAddress";
 
 const countryCodes: any = require('country-codes-list');
@@ -24,7 +23,7 @@ export class NewAddressModalComponent implements OnInit {
   @Input() addressCountOfUser: number = 0;
   @Output() addressCountOfUserChange: EventEmitter<number> = new EventEmitter<number>();
 
-  user: IUser = getIUser();
+  userId: number = 0;
   countryCodeList: any; // TODO: check which type
   newAddressForm: FormGroup = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
@@ -44,7 +43,7 @@ export class NewAddressModalComponent implements OnInit {
               private userService: UserService) { }
 
   async ngOnInit(): Promise<void> {
-    await this.setUser();
+    this.userId = await this.userService.getUserId();
     this.countryCodeList = this.getCountryCodeList();
   }
 
@@ -69,19 +68,11 @@ export class NewAddressModalComponent implements OnInit {
   }
 
   /**
-   * Get user information out of local storage and the userId stored in the token and set the user variable
-   */
-  async setUser(): Promise<void> {
-    this.user = this.userService.getUserFromLocalStorage();
-    this.user.id = await this.userService.getUserIdOfToken();
-  }
-
-  /**
    * save new address in DB
    */
   saveNewAddress(): void {
     if (this.newAddressForm.valid) {
-      this.userService.saveAddress(this.newAddressForm.value, this.user.id).then(() => {
+      this.userService.saveAddress(this.newAddressForm.value, this.userId).then(() => {
         this.hideNewAddressModal();
         this.updateAddressList(this.newAddressForm.value);
       }).catch((error: any) => {

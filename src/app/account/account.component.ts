@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { IAddress } from 'src/app/shared/interfaces/IAddress';
-import { getIUser, IUser } from 'src/app/shared/interfaces/IUser';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -12,7 +11,7 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
-  user: IUser = getIUser();
+  userId: number = 0;
   showAddressModal: boolean = false;
   addressListOfUser: IAddress[] = [];
   addressCountOfUser: number = 0;
@@ -23,8 +22,8 @@ export class AccountComponent implements OnInit {
               private toastrService: ToastrService) { }
 
   async ngOnInit(): Promise<void> {
-    // await this.setUser();
-    // this.getAddressListOfUserId(this.user.id);
+    this.userId = await this.userService.getUserId();
+    this.getAddressListOfUserId(this.userId);
   }
 
   /**
@@ -33,14 +32,6 @@ export class AccountComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/']).then();
-  }
-
-  /**
-   * Get user information out of local storage and the userId stored in the token and set the user variable
-   */
-  async setUser(): Promise<void> {
-    this.user = this.userService.getUserFromLocalStorage();
-    this.user.id = await this.userService.getUserIdOfToken();
   }
 
   /**

@@ -17,7 +17,6 @@ export class IsUserAuthenticatedGuard implements CanActivate {
       state: RouterStateSnapshot): Promise<boolean> {
 
       const isAuthenticated = await this.authService.isAuthenticated();
-      console.log(isAuthenticated);
 
       if (isAuthenticated) {
         this.router.navigate(['/account']);

@@ -41,12 +41,10 @@ export class AuthService {
   /**
    * Logout a user
    */
-  public logout(): void {
-    const user: any = this.userService.getUserFromLocalStorage();
-    this.http.post('http://localhost:3000/logout', { email: user?.email }, { withCredentials: true }).toPromise().then(() => {
-      localStorage.removeItem('user');
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
+  public async logout(): Promise<void> {
+    const userId = await this.userService.getUserId();
+
+    this.http.get('http://localhost:3000/logout/' + userId, { withCredentials: true }).toPromise().then(() => {
       this.router.navigate(['/']);
     }).catch((err) => {
       console.log(err);
