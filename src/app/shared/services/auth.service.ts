@@ -25,24 +25,12 @@ export class AuthService {
     return this.http.post('http://localhost:3000/login', { email, password, rememberMe }, { withCredentials: true }).toPromise();
   }
 
-  /*
-  { withCredentials: true } -------> to send the auth cookie
-   */
-
-  /**
-   * Do refresh the access token
-   * @param refreshToken string
-   * @returns Promise
-   */
-  public refreshToken(refreshToken: string): Promise<any> {
-    return this.http.post('http://localhost:3000/refreshToken', { refreshToken }).toPromise();
-  }
-
   /**
    * Logout a user
    */
   public async logout(): Promise<void> {
     const userId = await this.userService.getUserId();
+    console.log(userId);
 
     this.http.get('http://localhost:3000/logout/' + userId, { withCredentials: true }).toPromise().then(() => {
       this.router.navigate(['/']);
