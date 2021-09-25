@@ -4,8 +4,7 @@ import { RouterModule } from '@angular/router';
 import { appRouting } from './app-routing';
 import { AppComponent } from './app.component';
 import { NavigationModule } from './navigation/navigation.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 import { UserAuthGuard } from './shared/guards/user-auth.guard';
 import { AdminModule } from './admin/admin.module';
 import { IsUserAuthenticatedGuard } from './shared/guards/is-user-authenticated.guard';
@@ -36,7 +35,7 @@ import { ReactiveFormsModule } from "@angular/forms";
   providers: [
     UserAuthGuard,
     IsUserAuthenticatedGuard,
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    // {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
