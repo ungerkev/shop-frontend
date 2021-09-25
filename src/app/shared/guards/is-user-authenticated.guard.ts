@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import {AuthService} from "../services/auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class IsUserAuthenticatedGuard implements CanActivate {
-  constructor(public userService: UserService,
+  constructor(public authService: AuthService,
               public router: Router) {}
 
     /**
      * activates private routes if user is authenticated
      */
-    canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
+    async canActivate(
+      route: ActivatedRouteSnapshot,
+      state: RouterStateSnapshot): Promise<boolean> {
 
-      const isAuthenticated = this.userService.isAuthenticated();
+      const isAuthenticated = await this.authService.isAuthenticated();
+      console.log(isAuthenticated);
 
       if (isAuthenticated) {
         this.router.navigate(['/account']);

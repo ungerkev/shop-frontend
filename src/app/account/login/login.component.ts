@@ -11,20 +11,23 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required])
+    password: new FormControl('', [Validators.required]),
+    rememberMe: new FormControl(false)
   });
 
   constructor(private authService: AuthService,
               private router: Router) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    const isAuthenticated = await this.authService.isAuthenticated();
+    console.log(isAuthenticated);
   }
 
   login(): void {
     // check if email and password is filled in form
     if (this.loginForm.value.email !== '' && this.loginForm.value.password !== '') {
       // do the login
-      this.authService.login(this.loginForm.value.email, this.loginForm.value.password).then((res: any) => {
+      this.authService.login(this.loginForm.value.email, this.loginForm.value.password, this.loginForm.value.rememberMe).then((res: any) => {
         localStorage.setItem('user', JSON.stringify({
           firstName: res.user.firstName,
           lastName: res.user.lastName,
@@ -34,6 +37,7 @@ export class LoginComponent implements OnInit {
 
         this.router.navigate(['/account']);
       }).catch((err) => {
+        console.log('login error');
         console.log(err);
       });
     }

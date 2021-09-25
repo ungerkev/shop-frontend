@@ -23,8 +23,8 @@ export class AccountComponent implements OnInit {
               private toastrService: ToastrService) { }
 
   async ngOnInit(): Promise<void> {
-    await this.setUser();
-    this.getAddressListOfUserId(this.user.id);
+    // await this.setUser();
+    // this.getAddressListOfUserId(this.user.id);
   }
 
   /**

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IAddress } from '../interfaces/IAddress';
-import { getIUser, IUser } from '../interfaces/IUser';
 
 @Injectable({
   providedIn: 'root'
@@ -36,19 +35,6 @@ export class UserService {
    */
   public getUserIdOfToken(): Promise<any> {
     return this.http.get('http://localhost:3000/userId').toPromise();
-  }
-
-  /**
-   * Check if user is authenticated
-   * @returns boolean
-   */
-   public isAuthenticated(): boolean {
-    const user = this.getUserFromLocalStorage();
-    if (!user) {
-      return false;
-    }
-
-    return true;
   }
 
   /**

@@ -1,13 +1,11 @@
-
-<div class="wrapper">
+<div class="wrapper" xmlns="http://www.w3.org/1999/html">
     <div class="header">
         <h1>LOGIN</h1>
         <h2>Please enter your e-mail and password:</h2>
     </div>
-    
+
 
     <form class="input-fields" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
-        
         <div style="height: 25px;">
             <input type="text" formControlName="email" placeholder="Email">
             <small *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.required">
@@ -17,7 +15,7 @@
                 Email address not well formed!
             </small>
         </div>
-            
+
 
         <div style="height: 25px;">
             <input type="password" formControlName="password" placeholder="Password">
@@ -25,11 +23,15 @@
                 Please enter password!
             </small>
         </div>
-            
+
+
+        <input type="checkbox" formControlName="rememberMe">Remember me
+
+
+
         <button type="submit" [disabled]="!loginForm.valid" >LOGIN</button>
-        
     </form>
-    
+
 
     <p routerLink="/account/register">Don't have an account? Create one</p>
 

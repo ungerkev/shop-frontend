@@ -18,11 +18,16 @@ export class AuthService {
    * Login a user
    * @param email string
    * @param password string
+   * @param rememberMe boolean
    * @returns promise
    */
-  public login(email: string, password: string): Promise<any> {
-    return this.http.post('http://localhost:3000/login', { email, password }, { withCredentials: true }).toPromise();
+  public login(email: string, password: string, rememberMe: boolean): Promise<any> {
+    return this.http.post('http://localhost:3000/login', { email, password, rememberMe }, { withCredentials: true }).toPromise();
   }
+
+  /*
+  { withCredentials: true } -------> to send the auth cookie
+   */
 
   /**
    * Do refresh the access token
@@ -38,14 +43,17 @@ export class AuthService {
    */
   public logout(): void {
     const user: any = this.userService.getUserFromLocalStorage();
-    this.http.post('http://localhost:3000/logout', { email: user?.email }).toPromise().then(() => {
+    this.http.post('http://localhost:3000/logout', { email: user?.email }, { withCredentials: true }).toPromise().then(() => {
       localStorage.removeItem('user');
       localStorage.removeItem('accessToken');
       localStorage.removeItem('refreshToken');
       this.router.navigate(['/']);
     }).catch((err) => {
-      this.toastrService.error('Logout failed', 'Error');
-      throw new Error('Logout failed');
+      console.log(err);
     });
+  }
+
+  public isAuthenticated(): Promise<any> {
+    return this.http.get('http://localhost:3000/isAuthenticated',{ withCredentials: true }).toPromise();
   }
 }
