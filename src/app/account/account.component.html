@@ -70,7 +70,8 @@
   *ngIf="showAddressModal"
   [(showAddressModal)]="showAddressModal"
   [(addressListOfUser)]="addressListOfUser"
-  [(addressCountOfUser)]="addressCountOfUser">
+  [(addressCountOfUser)]="addressCountOfUser"
+  (addressListOfUserChange)="getAddressListOfUserId(userId)">
 </app-new-address-modal>
 
 <router-outlet></router-outlet>
