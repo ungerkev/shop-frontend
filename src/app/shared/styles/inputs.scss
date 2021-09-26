@@ -86,3 +86,12 @@ select::-ms-expand {
     color: $grey_text_color;
     pointer-events: none;
 }
+
+/*
+Desing p tag as a link
+ */
+.p-link {
+  cursor: pointer;
+  border-bottom: 1px solid black;
+  padding-bottom: 3px;
+}

@@ -1,34 +1,66 @@
 <div class="wrapper">
     <div class="logout">
-        <button (click)="logout()" class="logout-button"> Logout </button>
-        <p>Welcome back</p>
+        <button (click)="logout()" class="button-big"> Logout </button>
+        <p>Welcome back [Display users firstName + lastName]</p>
     </div>
 
     <div class="information">
-        <div class="orders">
-            orders
+        <div>
+          <h2>Orders</h2> <hr>
         </div>
 
-        <div class="addresses">
-            adresses
-            <div *ngFor="let address of addressListOfUser; let lastItem = last;">
-                <div style="display: flex; gap: 5px; margin-bottom: 15px;">
+      <div class="address-wrapper">
+        <h2>Address</h2> <hr>
+
+        <div class="address">
+            <div style="display: flex; align-items: center;" *ngFor="let address of addressListOfUser; let first = first">
+
+              <div *ngIf="first" class="marker" style="background-color: #f0ffff;">
+                <p>D</p>
+                <p>E</p>
+                <p>F</p>
+                <p>A</p>
+                <p>U</p>
+                <p>L</p>
+                <p>T</p>
+              </div>
+
+              <div *ngIf="!first" class="marker">
+                <p>O</p>
+                <p>P</p>
+                <p>T</p>
+                <p>I</p>
+                <p>O</p>
+                <p>N</p>
+                <p>A</p>
+                <p>L</p>
+              </div>
+
+              <div>
+                <div class="name">
                     <p> {{ address.firstName }} </p>
                     <p> {{ address.lastName }} </p>
                 </div>
 
-                <div style="display: flex; flex-direction: column; gap: 3px;">
+                <div class="details">
                     <p> {{ address.address1 }} </p>
                     <p> {{ address.address2 }} </p>
                     <p> {{ address.city }} </p>
                     <p> {{ address.country }} </p>
                 </div>
 
-                <hr *ngIf="!lastItem" style="margin-top: 15px; margin-bottom: 15px;">
+                <div class="arrange-links">
+                  <p class="p-link">Edit</p>
+                  <p class="p-link">Delete</p>
+                </div>
+              </div>
+
             </div>
-            <button (click)="showAddressModal = true" class="button-big" [disabled]="addressCountOfUser > 3">Add new address</button>
         </div>
+        <button (click)="showAddressModal = true" class="button-big" style="margin-top: 25px;" [disabled]="addressCountOfUser > 3">Add new address</button>
+      </div>
     </div>
+
 </div>
 
 <!----------------------->
