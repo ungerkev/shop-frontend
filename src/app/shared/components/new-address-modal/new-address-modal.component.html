@@ -7,14 +7,14 @@
     <form class="form" [formGroup]="newAddressForm" (ngSubmit)="saveNewAddress()" novalidate>
       <label>
         <span> First name
-            <span class="required-input" *ngIf="validateIsFirstNameSet()"> &nbsp;*Please fill in </span>
+            <span class="required-input" *ngIf="validateFirstNameRequired()"> &nbsp;*Please fill in </span>
         </span>
         <input type="text" formControlName="firstName">
       </label>
 
       <label>
         <span> Last name
-            <span class="required-input" *ngIf="validateIsLastNameSet()"> &nbsp;*Please fill in </span>
+            <span class="required-input" *ngIf="validateLastNameRequired()"> &nbsp;*Please fill in </span>
         </span>
         <input type="text" formControlName="lastName">
       </label>
@@ -26,14 +26,14 @@
 
       <label>
         <span> Phone
-            <span class="required-input" *ngIf="validateIsPhoneSet()"> &nbsp;*Please fill in </span>
+            <span class="required-input" *ngIf="validatePhoneRequired()"> &nbsp;*Please fill in </span>
         </span>
         <input type="text" formControlName="phone">
       </label>
 
       <label>
         <span> Address1
-            <span class="required-input" *ngIf="validateIsAddress1Set()"> &nbsp;*Please fill in </span>
+            <span class="required-input" *ngIf="validateAddress1Required()"> &nbsp;*Please fill in </span>
         </span>
         <input type="text" formControlName="address1">
       </label>
@@ -45,7 +45,7 @@
 
       <label>
         <span> City
-            <span class="required-input" *ngIf="validateIsCitySet()"> &nbsp;*Please fill in </span>
+            <span class="required-input" *ngIf="validateCityRequired()"> &nbsp;*Please fill in </span>
         </span>
         <input type="text" formControlName="city">
       </label>
@@ -53,7 +53,7 @@
       <div style="display: flex; flex-wrap: wrap; gap: 10px;">
         <label>
           <span> Country
-              <span class="required-input" *ngIf="validateIsCountrySet()"> &nbsp;*Please fill in </span>
+              <span class="required-input" *ngIf="validateCountryRequired()"> &nbsp;*Please fill in </span>
           </span>
           <div class="select-wrapper" style="max-width: 195px;">
             <select formControlName="country">
@@ -65,8 +65,8 @@
 
         <label>
           <span> Zip code
-              <span class="required-input" *ngIf="validateIsZipCodeSet()"> &nbsp;*Please fill in </span>
-              <span class="required-input" *ngIf="validateZipCode()"> &nbsp;*Zip code invalid </span>
+              <span class="required-input" *ngIf="validateZipCodeRequired()"> &nbsp;*Please fill in </span>
+              <span class="required-input" *ngIf="validateZipCodePerCountryCode()"> &nbsp;*Zip code invalid </span>
           </span>
           <input type="text" formControlName="zipCode" style="max-width: 165px;">
         </label>

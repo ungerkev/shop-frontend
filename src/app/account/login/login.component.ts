@@ -21,20 +21,47 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    // check if email and password is filled in form
-    if (this.loginForm.value.email !== '' && this.loginForm.value.password !== '') {
-      // do the login
-      this.authService.login(this.loginForm.value.email, this.loginForm.value.password).then((res: any) => {
-        this.router.navigate(['/account']);
-      }).catch((err) => {
-        console.log('login error');
-        console.log(err);
-      });
+    if (this.loginForm.value.email === '' && this.loginForm.value.password === '') {
+      return;
     }
 
-    // const test = JSON.parse(localStorage.getItem('user') || '');
-    // console.log(test);
+    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).then((res: any) => {
+      this.router.navigate(['/account']).then();
+    }).catch((err) => {
+      console.log('login error');
+      console.log(err);
+    });
   }
 
+  /*************************************
+   * Login validators
+   *************************************/
 
+  /**
+   * Validate required email address
+   * @returns boolean
+   */
+  validateEmailRequired(): boolean {
+    return !!(this.loginForm.get('email')?.touched
+      && this.loginForm.get('email')?.errors?.required);
+  }
+
+  /**
+   * Validate if email is well formed
+   * @returns boolean
+   */
+  validateEmailWellFormed(): boolean {
+    return !!(this.loginForm.get('email')?.dirty
+      && !this.loginForm.get('email')?.errors?.required
+      && this.loginForm.get('email')?.errors?.email);
+  }
+
+  /**
+   * Validate required password
+   * @returns boolean
+   */
+  validatePasswordRequired(): boolean {
+    return !!(this.loginForm.get('password')?.touched
+      && this.loginForm.get('password')?.errors?.required);
+  }
 }

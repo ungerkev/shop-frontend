@@ -7,21 +7,15 @@
     <form class="form" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
       <label>
         <span> Email
-          <span class="required-input" *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.required">
-            *Please fill in
-          </span>
-          <span class="required-input" *ngIf="loginForm.controls.email.dirty && loginForm.controls.email.errors?.email">
-            *Not well formed
-          </span>
+          <span class="required-input" *ngIf="validateEmailRequired()"> *Please fill in </span>
+          <span class="required-input" *ngIf="validateEmailWellFormed()"> *Not well formed </span>
         </span>
         <input type="text" formControlName="email">
       </label>
 
       <label>
         <span> Password
-          <span class="required-input" *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.required">
-            *Please fill in
-          </span>
+          <span class="required-input" *ngIf="validatePasswordRequired()"> *Please fill in </span>
         </span>
         <input type="password" formControlName="password">
       </label>

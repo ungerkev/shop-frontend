@@ -97,7 +97,7 @@ export class NewAddressModalComponent implements OnInit {
    * Validate required zipCode
    * @returns boolean
    */
-  validateIsZipCodeSet(): boolean {
+  validateZipCodeRequired(): boolean {
     return !!(this.newAddressForm.get('zipCode')?.touched
       && this.newAddressForm.get('zipCode')?.errors?.required);
   }
@@ -106,7 +106,7 @@ export class NewAddressModalComponent implements OnInit {
    * Validate zipCode per country code
    * @returns boolean
    */
-  validateZipCode(): boolean {
+  validateZipCodePerCountryCode(): boolean {
     if (this.newAddressForm.get('country')?.invalid) {
       this.newAddressForm.get('zipCode')?.disable();
     } else {
@@ -122,7 +122,7 @@ export class NewAddressModalComponent implements OnInit {
    * Validate required country
    * @returns boolean
    */
-  validateIsCountrySet(): boolean {
+  validateCountryRequired(): boolean {
     return !!(this.newAddressForm.get('country')?.dirty
       && this.newAddressForm.get('country')?.errors?.required);
   }
@@ -131,7 +131,7 @@ export class NewAddressModalComponent implements OnInit {
    * Validate required city
    * @returns boolean
    */
-  validateIsCitySet(): boolean {
+  validateCityRequired(): boolean {
     return !!(this.newAddressForm.get('city')?.touched
       && this.newAddressForm.get('city')?.errors?.required);
   }
@@ -140,7 +140,7 @@ export class NewAddressModalComponent implements OnInit {
    * Validate required address1
    * @returns boolean
    */
-  validateIsAddress1Set(): boolean {
+  validateAddress1Required(): boolean {
     return !!(this.newAddressForm.get('address1')?.touched
       && this.newAddressForm.get('address1')?.errors?.required);
   }
@@ -149,7 +149,7 @@ export class NewAddressModalComponent implements OnInit {
    * Validate required phone number
    * @returns boolean
    */
-  validateIsPhoneSet(): boolean {
+  validatePhoneRequired(): boolean {
     return !!(this.newAddressForm.get('phone')?.touched
       && this.newAddressForm.get('phone')?.errors?.required);
   }
@@ -158,7 +158,7 @@ export class NewAddressModalComponent implements OnInit {
    * Validate required last name
    * @returns boolean
    */
-  validateIsLastNameSet(): boolean {
+  validateLastNameRequired(): boolean {
     return !!(this.newAddressForm.get('lastName')?.touched
       && this.newAddressForm.get('lastName')?.errors?.required);
   }
@@ -167,7 +167,7 @@ export class NewAddressModalComponent implements OnInit {
    * Validate required first name
    * @returns boolean
    */
-  validateIsFirstNameSet(): boolean {
+  validateFirstNameRequired(): boolean {
     return !!(this.newAddressForm.get('firstName')?.touched
       && this.newAddressForm.get('firstName')?.errors?.required);
   }
