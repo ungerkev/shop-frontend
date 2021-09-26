@@ -4,31 +4,30 @@
         <h2>Please enter your e-mail and password:</h2>
     </div>
 
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+      <label>
+        <span> Email
+          <span class="required-input" *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.required">
+            *Please fill in
+          </span>
+          <span class="required-input" *ngIf="loginForm.controls.email.dirty && loginForm.controls.email.errors?.email">
+            *Not well formed
+          </span>
+        </span>
+        <input type="text" formControlName="email">
+      </label>
 
-    <form class="input-fields" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
-        <div style="height: 25px;">
-            <input type="text" formControlName="email" placeholder="Email">
-            <small *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.required">
-                Please enter email address!
-            </small>
-            <small *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.email">
-                Email address not well formed!
-            </small>
-        </div>
+      <label>
+        <span> Password
+          <span class="required-input" *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.required">
+            *Please fill in
+          </span>
+        </span>
+        <input type="password" formControlName="password">
+      </label>
 
-
-        <div style="height: 25px;">
-            <input type="password" formControlName="password" placeholder="Password">
-            <small *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.required">
-                Please enter password!
-            </small>
-        </div>
-
-
-
-        <button type="submit" [disabled]="!loginForm.valid" >LOGIN</button>
+      <button type="submit" [disabled]="!loginForm.valid" class="button-big">LOGIN</button>
     </form>
-
 
     <p routerLink="/account/register">Don't have an account? Create one</p>
 

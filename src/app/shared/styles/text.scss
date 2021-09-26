@@ -1,9 +1,16 @@
+@import 'src/app/shared/styles/variables';
+
 h1 {
     font-size: 1.5em;
     color: rgb(56,56,56);
     text-transform: uppercase;
 }
 
+h2 {
+  font-size: 1.1em;
+  color: $grey_text_color;
+}
+
 p {
-    color: rgb(104,104,104);
+    color: $grey_text_color;
 }
