@@ -18,11 +18,10 @@ export class AuthService {
    * Login a user
    * @param email string
    * @param password string
-   * @param rememberMe boolean
    * @returns promise
    */
-  public login(email: string, password: string, rememberMe: boolean): Promise<any> {
-    return this.http.post('http://localhost:3000/login', { email, password, rememberMe }, { withCredentials: true }).toPromise();
+  public login(email: string, password: string): Promise<any> {
+    return this.http.post('http://localhost:3000/login', { email, password }, { withCredentials: true }).toPromise();
   }
 
   /**

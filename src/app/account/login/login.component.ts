@@ -12,7 +12,6 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
-    rememberMe: new FormControl(false)
   });
 
   constructor(private authService: AuthService,
@@ -25,7 +24,7 @@ export class LoginComponent implements OnInit {
     // check if email and password is filled in form
     if (this.loginForm.value.email !== '' && this.loginForm.value.password !== '') {
       // do the login
-      this.authService.login(this.loginForm.value.email, this.loginForm.value.password, this.loginForm.value.rememberMe).then((res: any) => {
+      this.authService.login(this.loginForm.value.email, this.loginForm.value.password).then((res: any) => {
         this.router.navigate(['/account']);
       }).catch((err) => {
         console.log('login error');
