@@ -46,6 +46,14 @@ export class AccountComponent implements OnInit {
       this.toastrService.error('Could not get all addresses', 'Error');
     });
   }
+
+  deleteAddress(id: number) {
+    this.userService.deleteAddress(id).then(() => {
+      this.getAddressListOfUserId(this.userId);
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
 }
 
 

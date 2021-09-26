@@ -20,6 +20,10 @@ export class UserService {
     return this.http.post('http://localhost:3000/saveAddress', { address }).toPromise();
   }
 
+  public deleteAddress(id: number): Promise<any> {
+    return this.http.delete('http://localhost:3000/deleteAddress/' + id).toPromise();
+  }
+
   /**
    * Returns an array of all addresses of an user id
    * @param userId number

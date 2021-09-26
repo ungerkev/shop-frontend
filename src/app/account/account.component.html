@@ -15,7 +15,7 @@
         <div class="address">
             <div style="display: flex; align-items: center;" *ngFor="let address of addressListOfUser; let first = first">
 
-              <div *ngIf="first" class="marker" style="background-color: #f0ffff;">
+              <div *ngIf="first && address.isDefault" class="marker" style="background-color: #f0ffff;">
                 <p>D</p>
                 <p>E</p>
                 <p>F</p>
@@ -25,7 +25,7 @@
                 <p>T</p>
               </div>
 
-              <div *ngIf="!first" class="marker">
+              <div *ngIf="!first && !address.isDefault" class="marker">
                 <p>O</p>
                 <p>P</p>
                 <p>T</p>
@@ -51,7 +51,7 @@
 
                 <div class="arrange-links">
                   <p class="p-link">Edit</p>
-                  <p class="p-link">Delete</p>
+                  <p class="p-link" (click)="deleteAddress(address.id)">Delete</p>
                 </div>
               </div>
 
