@@ -69,11 +69,8 @@
 <app-new-address-modal
   *ngIf="showAddressModal"
   [(showAddressModal)]="showAddressModal"
-  [(addressListOfUser)]="addressListOfUser"
-  [(addressCountOfUser)]="addressCountOfUser"
-  (addressListOfUserChange)="getAddressListOfUserId(userId)">
-</app-new-address-modal>
-
+  (showAddressModalChange)="getAddressListOfUserId(userId)"
+></app-new-address-modal>
 
 <!------------------------------>
 <!-- Delete Modal for address -->

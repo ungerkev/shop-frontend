@@ -17,11 +17,11 @@ export class NewAddressModalComponent implements OnInit {
   @Input() showAddressModal: boolean | undefined;
   @Output() showAddressModalChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  /**
+   * We need the addressListOfUser from the "parent-component" because of some validation
+   */
   @Input() addressListOfUser: IAddress[] | undefined;
   @Output() addressListOfUserChange: EventEmitter<IAddress[]> = new EventEmitter<IAddress[]>();
-
-  @Input() addressCountOfUser: number | undefined;
-  @Output() addressCountOfUserChange: EventEmitter<number> = new EventEmitter<number>();
 
   userId: number = 0;
   countryCodeList: any; // TODO: check which type
@@ -61,25 +61,12 @@ export class NewAddressModalComponent implements OnInit {
   }
 
   /**
-   * Update parent component
-   * @param newAddress IAddress
-   */
-  updateAddressList(newAddress: IAddress): void {
-    if (this.addressListOfUser) {
-      this.addressListOfUser.push(newAddress);
-    }
-    this.addressListOfUserChange.emit(this.addressListOfUser);
-    this.addressCountOfUserChange.emit(this.addressCountOfUser);
-  }
-
-  /**
    * save new address in DB
    */
   saveNewAddress(): void {
     if (this.newAddressForm.valid) {
       this.userService.saveAddress(this.newAddressForm.value, this.userId).then(() => {
         this.hideNewAddressModal();
-        this.updateAddressList(this.newAddressForm.value);
       }).catch((error: any) => {
         console.log(error);
       });
