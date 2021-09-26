@@ -16,7 +16,7 @@ p {
 }
 
 hr {
-  border-top: 1px solid silver;
+  border: 1px solid $input_border;
   width: 100%;
   margin-bottom: 25px;
 }
