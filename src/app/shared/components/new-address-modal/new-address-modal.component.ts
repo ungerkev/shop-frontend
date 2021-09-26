@@ -45,6 +45,11 @@ export class NewAddressModalComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.userId = await this.userService.getUserId();
     this.countryCodeList = this.getCountryCodeList();
+
+    if (!this.addressListOfUser || this.addressListOfUser.length === 0) {
+      this.newAddressForm.get('isDefault')?.setValue(true);
+      this.newAddressForm.get('isDefault')?.disable();
+    }
   }
 
   /**
