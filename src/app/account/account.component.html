@@ -51,7 +51,7 @@
 
                 <div class="arrange-links">
                   <p class="p-link">Edit</p>
-                  <p class="p-link" (click)="deleteAddress(address.id)">Delete</p>
+                  <p class="p-link" (click)="deleteInfo.showDeleteModal = true; deleteInfo.deleteId = address.id">Delete</p>
                 </div>
               </div>
 
@@ -73,5 +73,16 @@
   [(addressCountOfUser)]="addressCountOfUser"
   (addressListOfUserChange)="getAddressListOfUserId(userId)">
 </app-new-address-modal>
+
+
+<!-------------------------->
+<!-- Delete address Modal -->
+<!-------------------------->
+<app-delete-modal
+  *ngIf="deleteInfo.showDeleteModal"
+  [(showDeleteModal)]="deleteInfo.showDeleteModal"
+  [(doDelete)]="deleteInfo.doDelete"
+  (doDeleteChange)="deleteAddress(deleteInfo.deleteId)"
+></app-delete-modal>
 
 <router-outlet></router-outlet>

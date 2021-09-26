@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { IAddress } from 'src/app/shared/interfaces/IAddress';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { getIDeleteInfo, IDeleteInfo } from "../shared/interfaces/IDeleteInfo";
 
 @Component({
   selector: 'app-auth',
@@ -13,6 +14,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class AccountComponent implements OnInit {
   userId: number = 0;
   showAddressModal: boolean = false;
+  deleteInfo: IDeleteInfo = getIDeleteInfo(); // For delete modal
   addressListOfUser: IAddress[] = [];
   addressCountOfUser: number = 0;
 
@@ -47,12 +49,19 @@ export class AccountComponent implements OnInit {
     });
   }
 
+  /**
+   * Delete a particular address by its id
+   * @param id number
+   */
   deleteAddress(id: number) {
-    this.userService.deleteAddress(id).then(() => {
-      this.getAddressListOfUserId(this.userId);
-    }).catch((error) => {
-      console.log(error);
-    })
+    if (this.deleteInfo.doDelete) {
+      this.userService.deleteAddress(id).then(() => {
+        this.getAddressListOfUserId(this.userId);
+      }).catch((error) => {
+        console.log(error);
+      })
+    }
+    this.deleteInfo.doDelete = false;
   }
 }
 

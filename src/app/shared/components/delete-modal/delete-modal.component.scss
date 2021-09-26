@@ -1,0 +1,15 @@
+@import 'src/app/shared/styles/modal';
+@import 'src/app/shared/styles/inputs';
+@import 'src/app/shared/styles/text';
+
+.modal-content {
+  top: 30% !important;
+  max-width: 250px !important;
+
+  .arrange-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+}

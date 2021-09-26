@@ -48,6 +48,16 @@ input[disabled] {
     cursor: pointer;
 }
 
+.button-big-cancel {
+  font-size: 1em;
+  border: none;
+  background-color: $button_big_cancel_background_color;
+  color: $button_big_color;
+  letter-spacing: 2px;
+  padding: 12px;
+  cursor: pointer;
+}
+
 .button-big[disabled] {
     color: $button_big_color_disabled;
     background-color: $button_big_background_color_disabled;

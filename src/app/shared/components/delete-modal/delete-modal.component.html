@@ -1,0 +1,18 @@
+<p>delete-modal works!</p>
+
+
+
+<div class="modal">
+  <div class="modal-content">
+    <span (click)="hideDeleteModal()" class="close">&times;</span>
+    <h1>Delete</h1>
+    <p>Are you sure to delete?</p>
+
+    <div class="arrange-buttons">
+      <button (click)="doDeleteFct()" class="button-big">Delete</button>
+      <button (click)="hideDeleteModal()" class="button-big-cancel">Cancel</button>
+    </div>
+
+  </div>
+</div>
+

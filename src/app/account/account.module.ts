@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { accountRouting } from './account.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewAddressModalComponent } from "../shared/components/new-address-modal/new-address-modal.component";
+import { DeleteModalComponent } from "../shared/components/delete-modal/delete-modal.component";
 
 
 
@@ -14,7 +15,8 @@ import { NewAddressModalComponent } from "../shared/components/new-address-modal
     AccountComponent,
     LoginComponent,
     RegisterComponent,
-    NewAddressModalComponent
+    NewAddressModalComponent,
+    DeleteModalComponent
   ],
   imports: [
     accountRouting,
