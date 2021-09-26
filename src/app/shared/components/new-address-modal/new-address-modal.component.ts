@@ -20,7 +20,7 @@ export class NewAddressModalComponent implements OnInit {
   @Input() addressListOfUser: IAddress[] | undefined;
   @Output() addressListOfUserChange: EventEmitter<IAddress[]> = new EventEmitter<IAddress[]>();
 
-  @Input() addressCountOfUser: number = 0;
+  @Input() addressCountOfUser: number | undefined;
   @Output() addressCountOfUserChange: EventEmitter<number> = new EventEmitter<number>();
 
   userId: number = 0;
