@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ValidateZipCode } from "../../validators/validators";
 import { UserService } from "../../services/user.service";
 import { IAddress } from "../../interfaces/IAddress";
+import { AddressService } from "../../services/address.service";
 
 const countryCodes: any = require('country-codes-list');
 
@@ -37,7 +38,8 @@ export class EditAddressModalComponent implements OnInit {
     isDefault: new FormControl(false)
   });
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private addressService: AddressService) { }
 
   async ngOnInit(): Promise<void> {
     this.userId = await this.userService.getUserId();
@@ -69,7 +71,7 @@ export class EditAddressModalComponent implements OnInit {
    */
   async getAddressOfId(id: number | undefined): Promise<any> {
     if (!id) { return; }
-    return this.userService.getAddress(id);
+    return this.addressService.getAddress(id);
   }
 
 
@@ -87,7 +89,7 @@ export class EditAddressModalComponent implements OnInit {
    */
   async editAddressFct(): Promise<void> {
     if (this.editAddressForm.valid && this.editId && this.userId) {
-      await this.userService.editAddress(this.editId, this.userId, this.editAddressForm.value);
+      await this.addressService.editAddress(this.editId, this.userId, this.editAddressForm.value);
       this.hideEditAddressModal();
     }
 

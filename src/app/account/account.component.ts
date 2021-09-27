@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { getIDeleteInfo, IDeleteInfo } from "../shared/interfaces/IDeleteInfo";
 import { getIEditInfo, IEditInfo } from "../shared/interfaces/IEditInfo";
+import {AddressService} from "../shared/services/address.service";
 
 @Component({
   selector: 'app-auth',
@@ -26,6 +27,7 @@ export class AccountComponent implements OnInit {
   constructor(private authService: AuthService,
               private router: Router,
               private userService: UserService,
+              private addressService: AddressService,
               private toastrService: ToastrService) { }
 
   async ngOnInit(): Promise<void> {
@@ -46,7 +48,7 @@ export class AccountComponent implements OnInit {
    * @param userId number
    */
   getAddressListOfUserId(userId: number): void {
-    this.userService.getAllAddressesOfUserId(userId).then((addressesArray: any) => {
+    this.addressService.getAllAddressesOfUserId(userId).then((addressesArray: any) => {
       this.addressListOfUser = addressesArray.addresses.rows;
       this.addressCountOfUser = addressesArray.addresses.count;
     }).catch((error: any) => {
@@ -60,7 +62,7 @@ export class AccountComponent implements OnInit {
    */
   deleteAddress(id: number) {
     if (this.deleteInfo.doDelete) {
-      this.userService.deleteAddress(id).then(() => {
+      this.addressService.deleteAddress(id).then(() => {
         this.getAddressListOfUserId(this.userId);
       }).catch((error) => {
         console.log(error);

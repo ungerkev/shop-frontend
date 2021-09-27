@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ValidateZipCode } from "../../validators/validators";
 import { UserService } from "../../services/user.service";
 import { IAddress } from "../../interfaces/IAddress";
+import { AddressService } from "../../services/address.service";
 
 const countryCodes: any = require('country-codes-list');
 
@@ -34,7 +35,8 @@ export class NewAddressModalComponent implements OnInit {
     isDefault: new FormControl(false)
   });
 
-  constructor(private userService: UserService) { }
+  constructor(private addressService: AddressService,
+              private userService: UserService) { }
 
   async ngOnInit(): Promise<void> {
     this.userId = await this.userService.getUserId();
@@ -59,7 +61,7 @@ export class NewAddressModalComponent implements OnInit {
    */
   saveNewAddress(): void {
     if (this.newAddressForm.valid) {
-      this.userService.saveAddress(this.newAddressForm.value, this.userId).then(() => {
+      this.addressService.saveAddress(this.newAddressForm.value, this.userId).then(() => {
         this.hideNewAddressModal();
       }).catch((error: any) => {
         console.log(error);
