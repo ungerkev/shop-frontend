@@ -7,6 +7,7 @@ import { accountRouting } from './account.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewAddressModalComponent } from "../shared/components/new-address-modal/new-address-modal.component";
 import { DeleteModalComponent } from "../shared/components/delete-modal/delete-modal.component";
+import { EditAddressModalComponent } from "../shared/components/edit-address-modal/edit-address-modal.component";
 
 
 
@@ -16,7 +17,8 @@ import { DeleteModalComponent } from "../shared/components/delete-modal/delete-m
     LoginComponent,
     RegisterComponent,
     NewAddressModalComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    EditAddressModalComponent
   ],
   imports: [
     accountRouting,

@@ -1,8 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ValidateZipCode } from "../../validators/validators";
-import { AuthService } from "../../services/auth.service";
-import { Router } from "@angular/router";
 import { UserService } from "../../services/user.service";
 import { IAddress } from "../../interfaces/IAddress";
 
@@ -14,12 +12,10 @@ const countryCodes: any = require('country-codes-list');
   styleUrls: ['./new-address-modal.component.scss']
 })
 export class NewAddressModalComponent implements OnInit {
-  @Input() showAddressModal: boolean | undefined;
-  @Output() showAddressModalChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() showNewAddressModal: boolean | undefined;
+  @Output() showNewAddressModalChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  /**
-   * We need the addressListOfUser from the "parent-component" because of some validation
-   */
+  /** We need the addressListOfUser from the "parent-component" because of some validation **/
   @Input() addressListOfUser: IAddress[] | undefined;
   @Output() addressListOfUserChange: EventEmitter<IAddress[]> = new EventEmitter<IAddress[]>();
 
@@ -38,9 +34,7 @@ export class NewAddressModalComponent implements OnInit {
     isDefault: new FormControl(false)
   });
 
-  constructor(private authService: AuthService,
-              private router: Router,
-              private userService: UserService) { }
+  constructor(private userService: UserService) { }
 
   async ngOnInit(): Promise<void> {
     this.userId = await this.userService.getUserId();
@@ -56,8 +50,8 @@ export class NewAddressModalComponent implements OnInit {
    * Hide new address modal
    */
   hideNewAddressModal(): void {
-    this.showAddressModal = !this.showAddressModal;
-    this.showAddressModalChange.emit(this.showAddressModal);
+    this.showNewAddressModal = !this.showNewAddressModal;
+    this.showNewAddressModalChange.emit(this.showNewAddressModal);
   }
 
   /**

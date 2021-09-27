@@ -50,14 +50,14 @@
                 </div>
 
                 <div class="arrange-links">
-                  <p class="p-link">Edit</p>
+                  <p class="p-link" (click)="editInfo.showEditModal = true; editInfo.editId = address.id">Edit</p>
                   <p class="p-link" (click)="deleteInfo.showDeleteModal = true; deleteInfo.deleteId = address.id">Delete</p>
                 </div>
               </div>
 
             </div>
         </div>
-        <button (click)="showAddressModal = true" class="button-big" style="margin-top: 25px;" [disabled]="addressCountOfUser > 3">Add new address</button>
+        <button (click)="showNewAddressModal = true" class="button-big" style="margin-top: 25px;" [disabled]="addressCountOfUser > 3">Add new address</button>
       </div>
     </div>
 
@@ -67,9 +67,9 @@
 <!-- New address Modal -->
 <!----------------------->
 <app-new-address-modal
-  *ngIf="showAddressModal"
-  [(showAddressModal)]="showAddressModal"
-  (showAddressModalChange)="getAddressListOfUserId(userId)"
+  *ngIf="showNewAddressModal"
+  [(showNewAddressModal)]="showNewAddressModal"
+  (showNewAddressModalChange)="getAddressListOfUserId(userId)"
   [(addressListOfUser)]="addressListOfUser"
 ></app-new-address-modal>
 
@@ -82,5 +82,16 @@
   [(doDelete)]="deleteInfo.doDelete"
   (doDeleteChange)="deleteAddress(deleteInfo.deleteId)"
 ></app-delete-modal>
+
+<!------------------------>
+<!-- Edit address Modal -->
+<!------------------------>
+<app-edit-address-modal
+  *ngIf="editInfo.showEditModal"
+  [(showEditModal)]="editInfo.showEditModal"
+  (showEditModalChange)="getAddressListOfUserId(userId)"
+  [editId]="editInfo.editId"
+  [(addressListOfUser)]="addressListOfUser"
+></app-edit-address-modal>
 
 <router-outlet></router-outlet>

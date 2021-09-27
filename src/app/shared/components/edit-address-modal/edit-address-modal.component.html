@@ -1,0 +1,85 @@
+<div class="modal">
+  <div class="modal-content">
+    <span (click)="hideEditAddressModal()" class="close">&times;</span>
+    <h1>Edit address</h1>
+    <p>Please edit the information below.</p>
+
+    <form class="form" [formGroup]="editAddressForm" (ngSubmit)="editAddressFct()" novalidate>
+      <label>
+        <span> First name
+            <span class="required-input" *ngIf="validateFirstNameRequired()"> &nbsp;*Please fill in </span>
+        </span>
+        <input type="text" formControlName="firstName">
+      </label>
+
+      <label>
+        <span> Last name
+            <span class="required-input" *ngIf="validateLastNameRequired()"> &nbsp;*Please fill in </span>
+        </span>
+        <input type="text" formControlName="lastName">
+      </label>
+
+      <label>
+        <span> Company </span>
+        <input type="text" formControlName="company">
+      </label>
+
+      <label>
+        <span> Phone
+            <span class="required-input" *ngIf="validatePhoneRequired()"> &nbsp;*Please fill in </span>
+        </span>
+        <input type="text" formControlName="phone">
+      </label>
+
+      <label>
+        <span> Address1
+            <span class="required-input" *ngIf="validateAddress1Required()"> &nbsp;*Please fill in </span>
+        </span>
+        <input type="text" formControlName="address1">
+      </label>
+
+      <label>
+        <span> Address2 </span>
+        <input type="text" formControlName="address2">
+      </label>
+
+      <label>
+        <span> City
+            <span class="required-input" *ngIf="validateCityRequired()"> &nbsp;*Please fill in </span>
+        </span>
+        <input type="text" formControlName="city">
+      </label>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <label>
+          <span> Country
+              <span class="required-input" *ngIf="validateCountryRequired()"> &nbsp;*Please fill in </span>
+          </span>
+          <div class="select-wrapper" style="max-width: 195px;">
+            <select formControlName="country">
+              <option> </option>
+              <option *ngFor="let country of countryCodeList | keyvalue" [value]="country.value"> {{ country.key }} </option>
+            </select>
+          </div>
+        </label>
+
+        <label>
+          <span> Zip code
+              <span class="required-input" *ngIf="validateZipCodeRequired()"> &nbsp;*Please fill in </span>
+              <span class="required-input" *ngIf="validateZipCodePerCountryCode()"> &nbsp;*Zip code invalid </span>
+          </span>
+          <input type="text" formControlName="zipCode" style="max-width: 165px;">
+        </label>
+      </div>
+
+      <div class="checkbox">
+        <input type="checkbox" formControlName="isDefault">
+        <label> Set address as default </label>
+      </div>
+
+      <button class="button-big" [disabled]="!editAddressForm.valid">Edit address</button>
+    </form>
+
+  </div>
+</div>
+

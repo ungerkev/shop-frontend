@@ -5,6 +5,7 @@ import { IAddress } from 'src/app/shared/interfaces/IAddress';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { getIDeleteInfo, IDeleteInfo } from "../shared/interfaces/IDeleteInfo";
+import { getIEditInfo, IEditInfo } from "../shared/interfaces/IEditInfo";
 
 @Component({
   selector: 'app-auth',
@@ -12,9 +13,13 @@ import { getIDeleteInfo, IDeleteInfo } from "../shared/interfaces/IDeleteInfo";
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
-  userId: number = 0;
-  showAddressModal: boolean = false;
+  /** Modal variables **/
+  showNewAddressModal: boolean = false;
+  editInfo: IEditInfo = getIEditInfo(); // For edit modal
   deleteInfo: IDeleteInfo = getIDeleteInfo(); // For delete modal
+  /** **/
+
+  userId: number = 0;
   addressListOfUser: IAddress[] = [];
   addressCountOfUser: number = 0;
 
