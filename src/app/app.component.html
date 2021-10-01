@@ -1,5 +1,6 @@
 
-<app-navigation></app-navigation>
+<app-navigation *ngIf="!showAdminNavigation"></app-navigation>
+<app-adm-navigation *ngIf="showAdminNavigation"></app-adm-navigation>
 
 <router-outlet></router-outlet>
 
