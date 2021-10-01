@@ -2,7 +2,7 @@
 ---- Top navigation ----
 ----------------------->
 <div class="top-nav">
-  <a> Admin Panel </a>
+  <a class="admin-panel-text"> Admin Panel </a>
 
   <ul>
     <li> <a> Link </a> </li>
@@ -15,9 +15,8 @@
 ----------------------->
 <div class="side-nav">
   <ul>
-    <li> <a> <ion-icon name="add-circle-outline"></ion-icon> Product </a> </li>
-    <li> <a> Link </a> </li>
-    <li> <a> Link </a> </li>
-    <li> <a> Link </a> </li>
+    <li> <a [routerLink]="['/admin/dashboard']" routerLinkActive="activeLinkSidebar"> <ion-icon name="apps-outline"></ion-icon> Dashboard </a> </li>
+    <li> <a [routerLink]="['/admin/products']" routerLinkActive="activeLinkSidebar"> <ion-icon name="pricetag-outline"></ion-icon> Products </a> </li>
+    <li> <a [routerLink]="['/admin/customers']" routerLinkActive="activeLinkSidebar"> <ion-icon name="people-outline"></ion-icon> Customers </a> </li>
   </ul>
 </div>

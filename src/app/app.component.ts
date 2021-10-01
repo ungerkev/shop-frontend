@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   setShowAdminNavigation(): void {
     this.router.events.subscribe((routerData: Event) => {
       if(routerData instanceof ResolveEnd) {
-        if(routerData.url === '/admin'){
+        if(routerData.url.includes('/admin')){
           this.showAdminNavigation = true;
         }
       }
