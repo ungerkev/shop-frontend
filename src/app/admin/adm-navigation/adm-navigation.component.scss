@@ -1,0 +1,39 @@
+/***********************
+**** Top navigation ****
+***********************/
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px 20px 40px;
+  background-color: aquamarine;
+  border-bottom: 1px solid silver;
+
+  ul {
+    display: flex;
+    gap: 40px;
+  }
+}
+
+/************************
+**** Side navigation ****
+************************/
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px 40px 20px;
+  background-color: aqua;
+  position: fixed;
+  top: 57px;
+  bottom: 0;
+  width: 150px;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    li {
+
+    }
+  }
+}

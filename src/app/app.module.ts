@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { appRouting } from './app-routing';
@@ -37,6 +37,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     IsUserAuthenticatedGuard,
     // {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
