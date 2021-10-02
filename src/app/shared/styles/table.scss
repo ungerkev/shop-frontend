@@ -1,3 +1,9 @@
+.table-wrapper {
+  height: 70vh;
+  overflow-y: scroll;
+  border: 1px solid rgb(220, 220, 220);
+}
+
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -6,9 +12,14 @@ table {
 }
 
 td, th {
-  border: 1px solid rgb(220,220,220);
   text-align: left;
   padding: 8px;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background-color: rgb(135,206,250);
 }
 
 tr:nth-child(even) {

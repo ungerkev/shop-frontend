@@ -1,0 +1,34 @@
+/***********************************
+**** Pagination for ADMIN-PANEL ****
+***********************************/
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+
+  .pagination-button {
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(220,220,220);
+    padding: 8px 10px;
+    width: 80px;
+    justify-content: center;
+    font-size: 0.95em;
+    cursor: pointer;
+    gap: 3px;
+    border: none;
+  }
+
+  .pagination-button[disabled] {
+    cursor: not-allowed;
+  }
+
+  .count {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 0.8em;
+  }
+
+}

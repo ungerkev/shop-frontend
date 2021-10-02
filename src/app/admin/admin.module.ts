@@ -7,7 +7,7 @@ import { AdmLoginComponent } from './adm-login/adm-login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './products/products.component';
 import { CustomersComponent } from './customers/customers.component';
-
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,12 +16,13 @@ import { CustomersComponent } from './customers/customers.component';
     AdmLoginComponent,
     DashboardComponent,
     ProductsComponent,
-    CustomersComponent
+    CustomersComponent,
   ],
-  imports: [
-    adminRouting,
-    CommonModule,
-  ],
+    imports: [
+        adminRouting,
+        CommonModule,
+        FormsModule,
+    ],
   exports: [
     AdminComponent,
     AdmNavigationComponent

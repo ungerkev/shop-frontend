@@ -1,4 +1,8 @@
 @import '../../shared/styles/table';
+@import 'src/app/shared/styles/modal';
+@import 'src/app/shared/styles/inputs';
+@import 'src/app/shared/styles/text';
+@import 'src/app/shared/styles/adm-pagination';
 
 .wrapper {
   /* !!! Find a better solution  !!! */
@@ -7,33 +11,30 @@
   margin-top: 90px;
   margin-right: 20px;
 
+  /**********************
+  **** Product table ****
+  **********************/
+    table {
+      .ellipsis {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 100px;
+        white-space: nowrap;
+        display: block;
+      }
 
+      .edit-action {
+        margin-left: 5px;
+        cursor: pointer;
+        font-size: 1.3em;
+      }
 
-  table {
-    .ellipsis {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      max-width: 100px;
-      white-space: nowrap;
-      display: block;
-    }
-
-    .edit-action {
-      margin-left: 5px;
-      cursor: pointer;
-      font-size: 1.3em;
-    }
-
-    .delete-action {
-      margin-left: 10px;
-      cursor: pointer;
-      font-size: 1.3em;
-    }
-
-
+      .delete-action {
+        margin-left: 10px;
+        cursor: pointer;
+        font-size: 1.3em;
+      }
   }
-
-
 
 }
 
