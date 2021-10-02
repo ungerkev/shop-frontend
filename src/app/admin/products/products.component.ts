@@ -58,6 +58,14 @@ export class ProductsComponent implements OnInit {
   }
 
   /**
+   * On change limit the page is set to 1 and getProducts is called
+   */
+  async onChangeLimit(): Promise<void> {
+    this.page = '1';
+    await this.getProducts();
+  }
+
+  /**
    * Disable next button if no next page is available
    */
   disableNext(): boolean {

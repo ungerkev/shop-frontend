@@ -5,7 +5,7 @@
   ----------------------->
   <label>
     <div class="select-wrapper" style="max-width: 100px;">
-      <select [(ngModel)]="limit" (change)="getProducts()">
+      <select [(ngModel)]="limit" (change)="onChangeLimit()">
         <option value="10"> 10 </option>
         <option value="50"> 50 </option>
         <option value="100"> 100 </option>
