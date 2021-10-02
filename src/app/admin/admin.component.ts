@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-admin',
@@ -12,7 +12,7 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['admin/dashboard']);
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
   }
 
 }
