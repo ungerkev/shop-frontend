@@ -15,6 +15,9 @@ export class ProductsComponent implements OnInit {
   page: string = '1';
   totalPageCount: number = 0;
 
+  /** Add new product MODAL variables **/
+  showAddNewProductModal: boolean = false;
+
   constructor(private productService: ProductService) { }
 
   async ngOnInit(): Promise<void> {
