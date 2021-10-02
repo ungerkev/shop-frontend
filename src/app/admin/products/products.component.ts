@@ -19,7 +19,6 @@ export class ProductsComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.getProducts();
-    console.log(this.products.rows);
   }
 
   /**
