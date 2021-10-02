@@ -18,7 +18,15 @@
       <td> {{ product.price }}€ </td>
       <td> {{ product.oldPrice }} € </td>
       <td class="ellipsis" title="{{ product.tags }}"> {{ product.tags }} </td>
-      <td>add, del, edit</td>
+      <td>
+        <span title="Edit" class="edit-action">
+          <ion-icon name="create-outline"></ion-icon>
+        </span>
+
+        <span title="Delete" class="delete-action">
+          <ion-icon name="trash-outline"></ion-icon>
+        </span>
+      </td>
     </tr>
   </table>
 
