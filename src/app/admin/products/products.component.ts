@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from "../../shared/services/product.service";
-import {IProduct} from "../../shared/interfaces/IProduct";
+import { IProduct } from "../../shared/interfaces/IProduct";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-products',
@@ -17,6 +18,15 @@ export class ProductsComponent implements OnInit {
 
   /** Add new product MODAL variables **/
   showAddNewProductModal: boolean = false;
+  newProductForm: FormGroup = new FormGroup({
+    productName: new FormControl('', [Validators.required]),
+    image: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required]),
+    oldPrice: new FormControl(''),
+    tags: new FormControl('', [Validators.required]),
+    articleNr: new FormControl('', [Validators.required]),
+  });
 
   constructor(private productService: ProductService) { }
 
@@ -31,6 +41,10 @@ export class ProductsComponent implements OnInit {
     this.products = await this.productService.getProducts(this.page, this.limit);
     /** Calculate the total page count for pagination **/
     this.totalPageCount = Math.ceil(this.products.count / parseInt(this.limit, 10));
+  }
+
+  saveNewProduct(): void {
+    console.log('save new product');
   }
 
 
@@ -81,5 +95,55 @@ export class ProductsComponent implements OnInit {
   disablePrevious(): boolean {
     return parseInt(this.page, 10) <= 1;
   }
+
+  /********************************************
+   **** New product modal input validators ****
+   *******************************************/
+
+  /**
+   * Validate required product name
+   * @returns boolean
+   */
+  validateProductNameRequired(): boolean {
+    return !!(this.newProductForm.get('productName')?.touched
+      && this.newProductForm.get('productName')?.errors?.required);
+  }
+
+  /**
+   * Validate required description
+   * @returns boolean
+   */
+  validateDescriptionRequired(): boolean {
+    return !!(this.newProductForm.get('description')?.touched
+      && this.newProductForm.get('description')?.errors?.required);
+  }
+
+  /**
+   * Validate required price
+   * @returns boolean
+   */
+  validatePriceRequired(): boolean {
+    return !!(this.newProductForm.get('price')?.touched
+      && this.newProductForm.get('price')?.errors?.required);
+  }
+
+  /**
+   * Validate required tags
+   * @returns boolean
+   */
+  validateTagsRequired(): boolean {
+    return !!(this.newProductForm.get('tags')?.touched
+      && this.newProductForm.get('tags')?.errors?.required);
+  }
+
+  /**
+   * Validate required articleNr
+   * @returns boolean
+   */
+  validateArticleNrRequired(): boolean {
+    return !!(this.newProductForm.get('articleNr')?.touched
+      && this.newProductForm.get('articleNr')?.errors?.required);
+  }
+
 
 }

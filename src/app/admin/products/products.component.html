@@ -81,6 +81,53 @@
     <h1>Add new product</h1>
     <p>Please fill in the information below.</p>
 
+    <form class="form" [formGroup]="newProductForm" (ngSubmit)="saveNewProduct()" novalidate>
+      <label>
+          <span> Product name
+              <span class="required-input" *ngIf="validateProductNameRequired()"> &nbsp;*Please fill in </span>
+          </span>
+        <input type="text" formControlName="productName">
+      </label>
+
+      <label> Image
+        <input type="file" accept="image/png, image/jpeg" formControlName="image">
+      </label>
+
+      <label>
+          <span> Article number
+              <span class="required-input" *ngIf="validateArticleNrRequired()"> &nbsp;*Please fill in </span>
+          </span>
+        <input type="text" formControlName="articleNr">
+      </label>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <label>
+            <span> Price
+                <span class="required-input" *ngIf="validatePriceRequired()"> &nbsp;*Please fill in </span>
+            </span>
+          <input type="text" formControlName="price" style="max-width: 165px;">
+        </label>
+
+        <label> Old price
+          <input type="text" formControlName="oldPrice" style="max-width: 165px;">
+        </label>
+      </div>
+
+      <label>
+          <span> Description
+              <span class="required-input" *ngIf="validateDescriptionRequired()"> &nbsp;*Please fill in </span>
+          </span>
+        <textarea type="text" formControlName="description"></textarea>
+      </label>
+
+      <label>
+          <span> Tags
+              <span class="required-input" *ngIf="validateTagsRequired()"> &nbsp;*Please fill in </span>
+          </span>
+        <textarea type="text" formControlName="tags"></textarea>
+      </label>
+    </form>
+
     <div class="arrange-buttons">
       <button class="button-big">Add new product</button>
       <button (click)="showAddNewProductModal = false" class="button-big-cancel">Cancel</button>

@@ -7,7 +7,7 @@ import { AdmLoginComponent } from './adm-login/adm-login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './products/products.component';
 import { CustomersComponent } from './customers/customers.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import {FormsModule} from "@angular/forms";
         adminRouting,
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
     ],
   exports: [
     AdminComponent,
