@@ -13,13 +13,18 @@ label {
     }
 }
 
-input {
+input, textarea {
     font-size: 1.1em;
     outline: none;
     border: 1px solid $input_border;
     border-radius: 3px;
     padding: 8px 12px;
     color: $grey_text_color;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
 }
 
 input[disabled] {
@@ -95,6 +100,23 @@ select::-ms-expand {
     top: 5px;
     color: $grey_text_color;
     pointer-events: none;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.file-upload {
+  border: 1px solid $input_border;
+  display: inline-block;
+  padding: 10px 12px;
+  cursor: pointer;
+  border-radius: 3px;
+
+  .upload-icon {
+    transform: scale(1.2);
+    margin-left: 10px;
+  }
 }
 
 /*
