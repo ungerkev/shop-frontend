@@ -34,7 +34,7 @@
       </tr>
 
       <tr *ngFor="let product of products.rows">
-        <td> {{ product.image }} </td>
+        <td> <img src="http://localhost:3001/images/{{ product.image }}" alt="{{ product.image }}"> </td>
         <td> {{ product.name}} </td>
         <td class="ellipsis" title="{{ product.description }}"> {{ product.description }} </td>
         <td> {{ product.price }}€ </td>
