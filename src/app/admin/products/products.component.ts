@@ -19,7 +19,7 @@ export class ProductsComponent implements OnInit {
   /** Add new product MODAL variables **/
   showAddNewProductModal: boolean = false;
   newProductForm: FormGroup = new FormGroup({
-    productName: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required]),
     image: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
@@ -43,8 +43,20 @@ export class ProductsComponent implements OnInit {
     this.totalPageCount = Math.ceil(this.products.count / parseInt(this.limit, 10));
   }
 
-  saveNewProduct(): void {
-    console.log('save new product');
+  /**
+   * Save new product
+   */
+  async saveNewProduct(): Promise<void> {
+    if (this.newProductForm.valid) {
+      try {
+        await this.productService.saveNewProduct(this.newProductForm.value);
+        await this.productService.getProducts(this.page, this.limit);
+        this.showAddNewProductModal = false;
+      } catch (error: any) {
+        console.log('Product could not be saved');
+      }
+
+    }
   }
 
 
@@ -105,8 +117,8 @@ export class ProductsComponent implements OnInit {
    * @returns boolean
    */
   validateProductNameRequired(): boolean {
-    return !!(this.newProductForm.get('productName')?.touched
-      && this.newProductForm.get('productName')?.errors?.required);
+    return !!(this.newProductForm.get('name')?.touched
+      && this.newProductForm.get('name')?.errors?.required);
   }
 
   /**

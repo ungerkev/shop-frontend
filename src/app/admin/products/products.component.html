@@ -86,7 +86,7 @@
           <span> Product name
               <span class="required-input" *ngIf="validateProductNameRequired()"> &nbsp;*Please fill in </span>
           </span>
-        <input type="text" formControlName="productName">
+        <input type="text" formControlName="name">
       </label>
 
       <label class="file-upload"> Upload image
@@ -127,12 +127,12 @@
           </span>
         <textarea type="text" formControlName="tags"></textarea>
       </label>
-    </form>
 
-    <div class="arrange-buttons">
-      <button class="button-big">Add new product</button>
-      <button (click)="showAddNewProductModal = false" class="button-big-cancel">Cancel</button>
-    </div>
+      <div class="arrange-buttons">
+        <button class="button-big" [disabled]="!newProductForm.valid">Add new product</button>
+        <button (click)="showAddNewProductModal = false" class="button-big-cancel">Cancel</button>
+      </div>
+    </form>
   </div>
 </div>
 

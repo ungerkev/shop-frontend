@@ -64,8 +64,9 @@ input[disabled] {
 }
 
 .button-big[disabled] {
-    color: $button_big_color_disabled;
-    background-color: $button_big_background_color_disabled;
+  color: $button_big_color_disabled;
+  background-color: $button_big_background_color_disabled;
+  cursor: not-allowed;
 }
 
 select {
