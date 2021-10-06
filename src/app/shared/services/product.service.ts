@@ -22,10 +22,14 @@ export class ProductService {
   }
 
   /**
-   * Save new product
+   * Save new product WITH IMAGE
    * @param product IProduct
+   * @param image File
    */
-  public saveNewProduct(product: IProduct): Promise<any> {
-    return this.http.post('http://localhost:3001/product', { product }).toPromise();
+  public saveNewProduct(product: IProduct, image: File): Promise<any> {
+    const formData = new FormData();
+    formData.append('image', image, image.name);
+    formData.append('product', JSON.stringify(product));
+    return this.http.post('http://localhost:3001/product', formData ).toPromise();
   }
 }

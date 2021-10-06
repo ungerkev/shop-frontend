@@ -28,6 +28,8 @@ export class ProductsComponent implements OnInit {
     articleNr: new FormControl('', [Validators.required]),
   });
 
+  selectedFile!: File;
+
   constructor(private productService: ProductService) { }
 
   async ngOnInit(): Promise<void> {
@@ -44,13 +46,26 @@ export class ProductsComponent implements OnInit {
   }
 
   /**
+   * Store selected file in this.selectedFile and validate the reactive form
+   * @param event
+   */
+  processFile(event: any): void {
+    if (event.target.files[0]) {
+      this.selectedFile = event.target.files[0];
+      this.newProductForm.patchValue({ image: this.selectedFile.name});
+      this.newProductForm.updateValueAndValidity();
+    }
+  }
+
+  /**
    * Save new product
    */
   async saveNewProduct(): Promise<void> {
     if (this.newProductForm.valid) {
       try {
-        await this.productService.saveNewProduct(this.newProductForm.value);
-        await this.productService.getProducts(this.page, this.limit);
+        this.products = { rows: [], count: 0 };
+        await this.productService.saveNewProduct(this.newProductForm.value, this.selectedFile);
+        this.products = await this.productService.getProducts(this.page, this.limit);
         this.showAddNewProductModal = false;
       } catch (error: any) {
         console.log('Product could not be saved');
