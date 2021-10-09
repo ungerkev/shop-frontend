@@ -40,6 +40,7 @@ export class ProductsComponent implements OnInit {
    * Get products array and count all
    */
   async getProducts(): Promise<void> {
+    this.products = { rows: [], count: 0 };
     this.products = await this.productService.getProducts(this.page, this.limit);
     /** Calculate the total page count for pagination **/
     this.totalPageCount = Math.ceil(this.products.count / parseInt(this.limit, 10));
@@ -63,14 +64,28 @@ export class ProductsComponent implements OnInit {
   async saveNewProduct(): Promise<void> {
     if (this.newProductForm.valid) {
       try {
-        this.products = { rows: [], count: 0 };
         await this.productService.saveNewProduct(this.newProductForm.value, this.selectedFile);
-        this.products = await this.productService.getProducts(this.page, this.limit);
+        await this.getProducts();
         this.showAddNewProductModal = false;
       } catch (error: any) {
         console.log('Product could not be saved');
       }
 
+    }
+  }
+
+  /**
+   * Delete product of id
+   * @param id number
+   */
+  async deleteProduct(id: number | undefined): Promise<void> {
+    if (id) {
+      try {
+        await this.productService.deleteProduct(id);
+        await this.getProducts();
+      } catch (e: any) {
+        console.log(`Product with id ${id} not be deleted`);
+      }
     }
   }
 

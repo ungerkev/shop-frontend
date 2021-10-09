@@ -50,7 +50,7 @@
             <ion-icon name="create-outline"></ion-icon>
           </span>
 
-          <span title="Delete" class="delete-action">
+          <span (click)="deleteProduct(product.id)" title="Delete" class="delete-action">
             <ion-icon name="trash-outline"></ion-icon>
           </span>
         </td>
@@ -95,7 +95,7 @@
       </label>
 
       <label class="file-upload"> Upload image
-        <input (change)="processFile($event)" name="image" type="file" accept="image/png, image/jpeg" formControlName="image">
+        <input (change)="processFile($event)" name="image" type="file" accept="image/png, image/jpeg, image/jpg" formControlName="image">
         <ion-icon class="upload-icon" name="cloud-upload-outline"></ion-icon>
       </label>
 

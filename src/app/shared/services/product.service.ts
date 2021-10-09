@@ -32,4 +32,12 @@ export class ProductService {
     formData.append('product', JSON.stringify(product));
     return this.http.post('http://localhost:3001/product', formData ).toPromise();
   }
+
+  /**
+   * Delete product WITH IMAGE
+   * @param id number
+   */
+  public deleteProduct(id: number): Promise<any> {
+    return this.http.delete('http://localhost:3001/product/' + id).toPromise();
+  }
 }
