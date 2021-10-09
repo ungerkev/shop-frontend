@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './products/products.component';
 import { CustomersComponent } from './customers/customers.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { CategoriesComponent } from './categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     DashboardComponent,
     ProductsComponent,
     CustomersComponent,
+    CategoriesComponent,
   ],
     imports: [
         adminRouting,

@@ -27,12 +27,19 @@
   }
 
   table {
+    table-layout: fixed;
+
+    td {
+      vertical-align: middle;
+    }
+
     .ellipsis {
       text-overflow: ellipsis;
       overflow: hidden;
-      max-width: 100px;
+      max-width: 100%;
       white-space: nowrap;
       display: block;
+      line-height: 50px;
     }
 
     .edit-action {
@@ -45,11 +52,6 @@
       margin-left: 10px;
       cursor: pointer;
       font-size: 1.3em;
-    }
-
-    .table-img {
-      height: 100px;
-      width: auto;
     }
   }
 }

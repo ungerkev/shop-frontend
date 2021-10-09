@@ -24,25 +24,27 @@
   <div class="table-wrapper">
     <table>
       <tr>
-        <th> Image </th>
-        <th> Name </th>
-        <th> Description </th>
-        <th> Price </th>
-        <th> Old price </th>
-        <th> Tags </th>
-        <th> Actions </th>
+        <th style="width: 100px;"> Image </th>
+        <th style="width: 200px;"> Name </th>
+        <th style="width: 100%;"> Description </th>
+        <th style="width: 50px;"> Price </th>
+        <th style="width: 80px;"> Old price </th>
+        <th style="width: 100%"> Tags </th>
+        <th style="width: 150px;"> Category </th>
+        <th style="width: 80px;"> Actions </th>
       </tr>
 
       <tr *ngFor="let product of products.rows">
         <!---------------------->
         <!-- TODO dynamic url -->
         <!---------------------->
-        <td> <img src="http://localhost:3001/images/{{ product.image }}" alt="{{ product.image }}" class="table-img"> </td>
+        <td style="height: 50px; width: 50px;"> <img src="http://localhost:3001/images/{{ product.image }}" alt="{{ product.image }}" height="100%" width="100%"> </td>
         <td> {{ product.name}} </td>
         <td class="ellipsis" title="{{ product.description }}"> {{ product.description }} </td>
         <td> {{ product.price }}€ </td>
         <td> {{ product.oldPrice }} € </td>
         <td class="ellipsis" title="{{ product.tags }}"> {{ product.tags }} </td>
+        <td title="--CATEGORY--"> --CATEGORY-- </td>
         <td>
           <span title="Edit" class="edit-action">
             <ion-icon name="create-outline"></ion-icon>
